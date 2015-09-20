@@ -93,7 +93,8 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-
+	HAL_UART_Transmit_IT(&huart2,(uint8_t *)"send",5);
+	HAL_Delay(1000);
   /* USER CODE BEGIN 3 */
 
   }
