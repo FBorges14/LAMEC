@@ -1,4 +1,3 @@
-
 /**
   ******************************************************************************
   * File Name          : main.c
@@ -32,9 +31,12 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+
 //#define COORDINATOR
 
 #include "stm32f4xx_hal.h"
+#include "UART_Handler.h"
+
 
 #ifdef COORDINATOR
 	#include "usb_device.h"
@@ -47,6 +49,8 @@
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
+const uint8_t RXBUFFERSIZE = 250; //buffer de recepçao da UART
+uint8_t RxBuffer[RXBUFFERSIZE];
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -89,24 +93,20 @@ int main(void)
   MX_USB_DEVICE_Init();
 	#endif
 	MX_USART2_UART_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
+  
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-  /* USER CODE END WHILE */
-	HAL_UART_Transmit_IT(&huart2,(uint8_t *)"send",4);
-	HAL_Delay(1000);
-  /* USER CODE BEGIN 3 */
-
+		HAL_UART_Transmit_IT(&huart2,(uint8_t *)"send",4);
+		HAL_Delay(1000);
   }
-  /* USER CODE END 3 */
-
 }
 
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+   
+}
 /** System Clock Configuration
 */
 void SystemClock_Config(void)
