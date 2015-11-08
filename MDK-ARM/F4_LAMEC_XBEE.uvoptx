@@ -183,16 +183,16 @@
           <Type>0</Type>
           <LineNumber>80</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134224528</Address>
+          <Address>134224020</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Fabio Borges\Desktop\F4_LAMEC_XBEE\Src\stm32f4xx_it.c</Filename>
+          <Filename>\Mac\Home\Documents\Wndows_SHARED\GIT_Pessoal\LAMEC\MDK-ARM\\Mac\Home\Documents\Wndows_SHARED\GIT_Pessoal\LAMEC\Src\stm32f4xx_it.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F4_LAMEC_XBEE_Configuration\../Src/stm32f4xx_it.c\80</Expression>
+          <Expression>\\F4_LAMEC_XBEE_Configuration\/Mac/Home/Documents/Wndows_SHARED/GIT_Pessoal/LAMEC/MDK-ARM/../Src/stm32f4xx_it.c\80</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -201,7 +201,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -657,7 +657,7 @@
       <GroupNumber>6</GroupNumber>
       <FileNumber>30</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>

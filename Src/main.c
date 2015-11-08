@@ -73,19 +73,12 @@ static void MX_USART2_UART_Init(void);
 
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
+	uint8_t send_char = 's';
   /* MCU Configuration----------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
   /* Configure the system clock */
   SystemClock_Config();
-
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
 	#ifdef COORDINATOR
@@ -94,18 +87,21 @@ int main(void)
 	#endif
 	MX_USART2_UART_Init();
   
+	
   /* Infinite loop */
   while (1)
   {
-		HAL_UART_Transmit_IT(&huart2,(uint8_t *)"send",4);
-		HAL_Delay(1000);
+    if(Lib_GetUSBInBufByte(&send_char)){
+			HAL_UART_Transmit_IT(&huart2,&send_char,1);
+		}
   }
+	
 }
 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-   
+   Lib_UART_Receive_IT(huart);
 }
 /** System Clock Configuration
 */

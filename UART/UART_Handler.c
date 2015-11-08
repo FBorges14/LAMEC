@@ -21,7 +21,7 @@ uint16_t		UARTOutBufNextWrite=0;
   * @brief  Verifica se existem bytes para ler
   * @retval 1 se houver bytes novos; 0 se nao houver
   */
-uint8_t GetUSBInBufNumbytes(void)
+uint8_t Lib_GetUSBInBufNumbytes(void)
 {
 	if(UARTInBufNextWrite == UARTInBufNextRead)
 		return 0;
@@ -34,9 +34,9 @@ uint8_t GetUSBInBufNumbytes(void)
   * @param  inbyte: caracter a retornar
   * @retval 1 se houver caracter novo ; 0 se falhar ao obter um caracter novo
   */
-uint8_t GetUSBInBufByte(uint8_t *inbyte)
+uint8_t Lib_GetUSBInBufByte(uint8_t *inbyte)
 {
-  if(GetUSBInBufNumbytes()){
+  if(Lib_GetUSBInBufNumbytes()){
 			*inbyte = UARTInBuf[UARTInBufNextRead];
 			
 			if(UARTInBufNextRead == UARTINBUFSIZE - 1) {
@@ -59,7 +59,7 @@ uint8_t GetUSBInBufByte(uint8_t *inbyte)
   * @param  Size: tamanho de informaçºao a enviar
   * @retval HAL status (HAL_OK , HAL_ERROR , HAL_BUSY)
   */
-void UART_Receive_IT (UART_HandleTypeDef *huart)
+void Lib_UART_Receive_IT (UART_HandleTypeDef *huart)
 {	
 	uint16_t i=0;
 	int Size = huart->RxXferSize;
@@ -84,7 +84,7 @@ void UART_Receive_IT (UART_HandleTypeDef *huart)
   * @param  Size: tamanho de informaçºao a enviar
   * @retval HAL status (HAL_OK , HAL_ERROR , HAL_BUSY)
   */
-HAL_StatusTypeDef UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t * data, uint16_t Size)
+HAL_StatusTypeDef Lib_UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t * data, uint16_t Size)
 {
 	HAL_StatusTypeDef result;
   result = HAL_UART_Transmit_IT(huart, data , Size );
