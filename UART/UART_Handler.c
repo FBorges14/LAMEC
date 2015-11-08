@@ -59,14 +59,13 @@ uint8_t Lib_GetUSBInBufByte(uint8_t *inbyte)
   * @param  Size: tamanho de informaçºao a enviar
   * @retval HAL status (HAL_OK , HAL_ERROR , HAL_BUSY)
   */
-void Lib_UART_Receive_IT (UART_HandleTypeDef *huart)
+void Lib_UART_Receive_IT (uint8_t * data, uint8_t size)
 {	
 	uint16_t i=0;
-	int Size = huart->RxXferSize;
 	
-	for( i=0 ; i< Size	; i++)
+	for( i=0 ; i< size	; i++)
 	{
-		UARTInBuf[UARTInBufNextWrite] = huart->pRxBuffPtr[i];
+		UARTInBuf[UARTInBufNextWrite] = data[i];
     UARTInBufNumbytes++;
 
 		if(UARTInBufNextWrite == UARTINBUFSIZE - 1) 

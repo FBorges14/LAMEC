@@ -41,20 +41,11 @@
 #ifdef COORDINATOR
 	#include "usb_device.h"
 #endif
-/* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
-
-const uint8_t RXBUFFERSIZE = 250; //buffer de recepçao da UART
-uint8_t RxBuffer[RXBUFFERSIZE];
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -64,17 +55,15 @@ static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
-/* USER CODE END PFP */
-
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
+uint8_t buffer_cnt;
+uint8_t ack=1;
+uint8_t buffer[250];
 
 int main(void)
 {
 	uint8_t send_char = 's';
-  /* MCU Configuration----------------------------------------------------------*/
+  
+	/* MCU Configuration----------------------------------------------------------*/
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
   /* Configure the system clock */
@@ -91,17 +80,37 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-    if(Lib_GetUSBInBufByte(&send_char)){
-			HAL_UART_Transmit_IT(&huart2,&send_char,1);
-		}
+			if(HAL_UART_Receive_IT(&huart2,buffer,1)==HAL_OK)
+			{} 
+			else{
+				if(ack==1)
+				{
+					
+				}	
+				
+				if(ack==1){
+					if (Lib_GetUSBInBufByte(&send_char)){
+						ack=0;
+					}
+				} else {
+					if(Lib_UART_Transmit_IT(&huart2,&send_char,1)==HAL_OK)
+						ack=1;
+					else {
+						ack=0;
+					}
+				}
+				
+				
+			}
   }
-	
 }
 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-   Lib_UART_Receive_IT(huart);
+	 buffer_cnt+=huart->RxXferSize;
+   Lib_UART_Receive_IT(buffer,buffer_cnt);
+	 buffer_cnt=0;
 }
 /** System Clock Configuration
 */
