@@ -56,7 +56,6 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 uint8_t buffer_cnt;
-uint8_t ack=1;
 uint8_t buffer[250];
 
 int main(void)
@@ -83,24 +82,11 @@ int main(void)
 			if(HAL_UART_Receive_IT(&huart2,buffer,1)==HAL_OK)
 			{} 
 			else{
-				if(ack==1)
-				{
-					
-				}	
+				if(Lib_GetUARTInBufByte(&send_char)){
+					Lib_SetUARTOutBufBytes(&send_char, 1);
 				
-				if(ack==1){
-					if (Lib_GetUSBInBufByte(&send_char)){
-						ack=0;
-					}
-				} else {
-					if(Lib_UART_Transmit_IT(&huart2,&send_char,1)==HAL_OK)
-						ack=1;
-					else {
-						ack=0;
-					}
+					Lib_UART_Transmit_wRetry_IT(&huart2);
 				}
-				
-				
 			}
   }
 }
