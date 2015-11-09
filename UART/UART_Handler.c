@@ -162,8 +162,10 @@ uint8_t Lib_UART_Transmit_wRetry_IT(UART_HandleTypeDef *huart)
 {
 	uint8_t send_char = 0x00;
 	while(Lib_GetUARTOutBufByte(&send_char)){	//enquanto houver caracteres para transmitir
-			while(Lib_UART_Transmit_IT(huart,&send_char,1)==HAL_OK)	//tenta enviar ate conseguir
-			{}
+		
+			while(Lib_UART_Transmit_IT(huart,&send_char,1)!=HAL_OK)	//tenta enviar ate conseguir
+			{
+			}
 	}
 	return 1;
 }
