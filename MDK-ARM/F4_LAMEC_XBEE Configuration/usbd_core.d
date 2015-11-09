@@ -1,6 +1,6 @@
 f4_lamec_xbee configuration\usbd_core.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_core.c
 f4_lamec_xbee configuration\usbd_core.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h
-f4_lamec_xbee configuration\usbd_core.o: ..\Inc\usbd_conf.h
+f4_lamec_xbee configuration\usbd_core.o: ..\USB\usbd_conf.h
 f4_lamec_xbee configuration\usbd_core.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 f4_lamec_xbee configuration\usbd_core.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 f4_lamec_xbee configuration\usbd_core.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

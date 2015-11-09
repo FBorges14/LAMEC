@@ -29,8 +29,9 @@ f4_lamec_xbee configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4x
 f4_lamec_xbee configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h
 f4_lamec_xbee configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h
 f4_lamec_xbee configuration\main.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h
-f4_lamec_xbee configuration\main.o: ..\Inc\usb_device.h
+f4_lamec_xbee configuration\main.o: ..\UART\UART_Handler.h
+f4_lamec_xbee configuration\main.o: ..\USB\usb_device.h
 f4_lamec_xbee configuration\main.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h
-f4_lamec_xbee configuration\main.o: ..\Inc\usbd_conf.h
+f4_lamec_xbee configuration\main.o: ..\USB\usbd_conf.h
 f4_lamec_xbee configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 f4_lamec_xbee configuration\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

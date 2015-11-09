@@ -2,7 +2,7 @@ f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Libra
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc\USBD_CDC.h
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h
-f4_lamec_xbee configuration\usbd_cdc.o: ..\Inc\usbd_conf.h
+f4_lamec_xbee configuration\usbd_cdc.o: ..\USB\usbd_conf.h
 f4_lamec_xbee configuration\usbd_cdc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 f4_lamec_xbee configuration\usbd_cdc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 f4_lamec_xbee configuration\usbd_cdc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -38,4 +38,4 @@ f4_lamec_xbee configuration\usbd_cdc.o: ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm3
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h
 f4_lamec_xbee configuration\usbd_cdc.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h
-f4_lamec_xbee configuration\usbd_cdc.o: ..\Inc\usbd_desc.h
+f4_lamec_xbee configuration\usbd_cdc.o: ..\USB\usbd_desc.h

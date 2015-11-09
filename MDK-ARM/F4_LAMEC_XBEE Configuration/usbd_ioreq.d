@@ -1,7 +1,7 @@
 f4_lamec_xbee configuration\usbd_ioreq.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c
 f4_lamec_xbee configuration\usbd_ioreq.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h
 f4_lamec_xbee configuration\usbd_ioreq.o: ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h
-f4_lamec_xbee configuration\usbd_ioreq.o: ..\Inc\usbd_conf.h
+f4_lamec_xbee configuration\usbd_ioreq.o: ..\USB\usbd_conf.h
 f4_lamec_xbee configuration\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 f4_lamec_xbee configuration\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 f4_lamec_xbee configuration\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
