@@ -589,6 +589,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>XBee</GroupName>
+          <Files>
+            <File>
+              <FileName>XBee.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\XBee\XBee.c</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
