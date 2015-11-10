@@ -1,4 +1,3 @@
-
 /**
   ******************************************************************************
   * File Name          : main.c
@@ -32,21 +31,21 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+
+//#define COORDINATOR
+
 #include "stm32f4xx_hal.h"
-#include "usb_device.h"
+#include "UART_Handler.h"
 
-/* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
+#ifdef COORDINATOR
+	#include "usb_device.h"
+#endif
+
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
-
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -56,51 +55,50 @@ static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
-/* USER CODE END PFP */
-
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
+uint8_t buffer_cnt;
+uint8_t buffer[250];
 
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
+	uint8_t send_char = 's';
+  
+	/* MCU Configuration----------------------------------------------------------*/
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
   /* Configure the system clock */
   SystemClock_Config();
-
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+	#ifdef COORDINATOR
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
   MX_USB_DEVICE_Init();
-
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
+	#endif
+	MX_USART2_UART_Init();
+  
+	
+ 
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
+			if(HAL_UART_Receive_IT(&huart2,buffer,1)==HAL_OK)
+			{} 
+			else{
+				if(Lib_GetUARTInBufByte(&send_char)){
+					Lib_SetUARTOutBufBytes(&send_char, 1);
+				
+					Lib_UART_Transmit_wRetry_IT(&huart2);
+				}
+			}
   }
-  /* USER CODE END 3 */
-
 }
 
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	 buffer_cnt+=huart->RxXferSize;
+   Lib_UART_Receive_IT(buffer,buffer_cnt);
+	 buffer_cnt=0;
+}
 /** System Clock Configuration
 */
 void SystemClock_Config(void)
