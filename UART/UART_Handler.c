@@ -151,7 +151,7 @@ HAL_StatusTypeDef Lib_UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t * data
   return result;
 }
 /**
-  * @brief  Transmite informaçao pela UART com IT com retry
+  * @brief  Transmite informaçao pela UART com IT com retry ate conseguir enviar
   * @param  huart: apontador para estrutura UART_HandleTypeDef que tem informaçºao sobre as 
 	*                configuraçoes do modulo de UART
   * @param  data: apontador para buffer de informaçao a enviar
